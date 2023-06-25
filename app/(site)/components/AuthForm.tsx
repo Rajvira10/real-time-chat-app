@@ -6,6 +6,7 @@ import { FC, useCallback, useState } from "react";
 import { useForm, FieldValues, SubmitHandler } from "react-hook-form";
 import AuthSocialButton from "./AuthSocialButton";
 import { BsGithub, BsGoogle } from "react-icons/bs";
+import { toast } from "react-hot-toast";
 
 interface AuthFormProps {}
 
@@ -39,7 +40,10 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
     setIsLoading(true);
 
     if (variant === "REGISTER") {
-      await axios.post("/api/register", data);
+      await axios
+        .post("/api/register", data)
+        .catch(() => toast.error("Something went wrong!"))
+        .finally(() => setIsLoading(false));
     }
     if (variant === "LOGIN") {
       // signin
