@@ -64,6 +64,7 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
             type="email"
             register={register}
             errors={errors}
+            disabled={isLoading}
           />
           <Input
             id="password"
@@ -71,6 +72,7 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
             type="password"
             register={register}
             errors={errors}
+            disabled={isLoading}
           />
           <div>
             <Button disabled={isLoading} fullWidth type="submit">
