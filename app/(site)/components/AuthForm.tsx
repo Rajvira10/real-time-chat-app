@@ -63,8 +63,20 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
     }
   };
 
-  const socialAction = (action: string) => {
+  const socialAction = async (action: string) => {
     setIsLoading(true);
+    await signIn(action, {
+      redirect: false,
+    })
+      .then((callback) => {
+        if (callback?.error) {
+          toast.error("Invalid Credentials");
+        }
+        if (callback?.ok && !callback?.error) {
+          toast.success("Welcome back!");
+        }
+      })
+      .finally(() => setIsLoading(false));
   };
 
   return (
