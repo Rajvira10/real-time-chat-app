@@ -1,5 +1,5 @@
 "use client";
-
+import axios from "axios";
 import Button from "@/app/components/Button";
 import Input from "@/app/components/inputs/Input";
 import { FC, useCallback, useState } from "react";
@@ -35,11 +35,11 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
     },
   });
 
-  const onSubmit: SubmitHandler<FieldValues> = (data) => {
+  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     setIsLoading(true);
 
     if (variant === "REGISTER") {
-      // register
+      await axios.post("/api/register", data);
     }
     if (variant === "LOGIN") {
       // signin
