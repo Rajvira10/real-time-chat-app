@@ -1,8 +1,8 @@
 # Pusher Real Time Chat App
 
-A messenger clone where users can create groups and individual conversations and is real-time with pusher.
+A messenger clone where users can create groups and individual conversations and everything is real-time with pusher.
 
-https://studyhub-rajvira.vercel.app/
+https://real-time-chat-app-rajvira10.vercel.app/
 
 ## Technologies:
 
