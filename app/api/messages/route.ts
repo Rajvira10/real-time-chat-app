@@ -13,6 +13,10 @@ export async function POST(request: Request) {
     }
 
     const newMessage = await prisma.message.create({
+      include: {
+        seen: true,
+        sender: true,
+      },
       data: {
         body: message,
         image: image,
@@ -31,10 +35,6 @@ export async function POST(request: Request) {
             id: currentUser.id,
           },
         },
-      },
-      include: {
-        seen: true,
-        sender: true,
       },
     });
 
@@ -60,7 +60,7 @@ export async function POST(request: Request) {
       },
     });
 
-    await pusherServer.trigger(conversationId, "messages: new", newMessage);
+    await pusherServer.trigger(conversationId, "messages:new", newMessage);
 
     const lastMessage =
       updatedConversation.messages[updatedConversation.messages.length - 1];
