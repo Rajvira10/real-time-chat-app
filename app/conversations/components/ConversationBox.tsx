@@ -52,6 +52,9 @@ const ConversationBox: FC<ConversationBoxProps> = ({ data, selected }) => {
       return "Sent an image";
     }
     if (lastMessage?.body) {
+      if (lastMessage.sender.email === userEmail) {
+        return `You: ${lastMessage.body}`;
+      }
       return lastMessage.body;
     }
     return "Started a conversation";
