@@ -45,6 +45,8 @@ const MessageBox: FC<MessageBoxProps> = ({ isLast, data }) => {
     hello();
   }, [conversationId]);
 
+  useEffect(() => {});
+
   return (
     <div className={container}>
       <div className={avatar}>
