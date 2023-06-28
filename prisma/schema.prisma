@@ -1,3 +1,5 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
   provider = "prisma-client-js"
@@ -32,8 +34,8 @@ model Account {
   id String @id @default(auto()) @map("_id") @db.ObjectId
   userId             String   @db.ObjectId
   type               String
-  provider           String @unique
-  providerAccountId  String @unique
+  provider           String
+  providerAccountId  String
   refresh_token      String?  @db.String
   access_token       String?  @db.String
   expires_at         Int?
